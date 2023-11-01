@@ -167,9 +167,7 @@ void loop() {
 
   //Read saturn port
   //It's not required to disable interrupts but it will gain some performance
-  noInterrupts();
   saturn1.update();
-  interrupts();
 
   //Get the number of connected controllers
   const uint8_t joyCount = saturn1.getControllerCount();

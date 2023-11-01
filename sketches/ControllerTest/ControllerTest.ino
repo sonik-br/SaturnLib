@@ -68,10 +68,11 @@ if(A == B) {\
   debug(#B); \
 }
 
-void printDeviceType (const SatDeviceType_Enum d){
+void printDeviceType (const SatDeviceType_Enum d) {
   DEVICE(d, SAT_DEVICE_NONE)
   DEVICE(d, SAT_DEVICE_NOTSUPPORTED)
-  DEVICE(d, SAT_DEVICE_MEGA)
+  DEVICE(d, SAT_DEVICE_MEGA3)
+  DEVICE(d, SAT_DEVICE_MEGA6)
   DEVICE(d, SAT_DEVICE_PAD)
   DEVICE(d, SAT_DEVICE_3DPAD)
   DEVICE(d, SAT_DEVICE_WHEEL)
@@ -118,8 +119,6 @@ void loop() {
   
   //uint8_t hatData;
 
-  //It's not required to disable interrupts but it will gain some performance
-  noInterrupts();
   const unsigned long start = micros();
   
   //Call update to read the controller(s)
@@ -127,7 +126,7 @@ void loop() {
   
   //Time spent to read controller(s) in microseconds
   const unsigned long delta = micros() - start;
-  interrupts();
+  
   //debugln(delta);
 
   const uint8_t multitapPorts = saturn.getMultitapPorts();
